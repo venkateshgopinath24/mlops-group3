@@ -7,6 +7,7 @@ technology suites.
 
 However, before proceeding, we need to get some basics installed on your local machine. Below are the commands for Mac users.
 
+---
 ## Setting up Virtual Environment
 
 1. Install `pyenv` for managing virtual environments \
@@ -32,6 +33,7 @@ You should also check your python and pip versions: \
 It is recommended that you update your pip version to the latest version: \
 `python -m pip install --upgrade pip`
 
+---
 ## Installing Google Cloud Dependencies
 
 1. Download the [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
@@ -56,16 +58,17 @@ It is recommended that you update your pip version to the latest version: \
      - `source ./google-cloud-sdk/completion.zsh.inc`
 8. Go to your home directory for me it is `/Users/debanjansaha` and create a new file called `path.zsh.inc` and add the following lines to your file:
 ```
-    script_link="$( readlink "$0" )" || script_link="$0"
-    apparent_sdk_dir="${script_link%/*}"
-    if [ "$apparent_sdk_dir" == "$script_link" ]; then
-    apparent_sdk_dir=.
-    fi
-    sdk_dir="$( cd -P "$apparent_sdk_dir" && pwd -P )"
-    bin_path="$sdk_dir/bin"
-    export PATH=$bin_path:$PATH
+script_link="$( readlink "$0" )" || script_link="$0"
+apparent_sdk_dir="${script_link%/*}"
+if [ "$apparent_sdk_dir" == "$script_link" ]; then
+apparent_sdk_dir=.
+fi
+sdk_dir="$( cd -P "$apparent_sdk_dir" && pwd -P )"
+bin_path="$sdk_dir/bin"
+export PATH=$bin_path:$PATH
 
 ```
+ 
 
 That's it! You can now access the gcloud CLI. Check your installation by running the following command: \
 `gcloud --version` which will show that you have the following configuration set up:
@@ -74,3 +77,11 @@ That's it! You can now access the gcloud CLI. Check your installation by running
    - core 2024.01.31
    - gcloud-crc32c 1.0.0
    - gsutil 5.27
+
+---
+
+
+### References:
+1. [Installing GCloud CLI - Directions from Google](https://cloud.google.com/sdk/docs/install)
+2. [Stack Overflow Thread regarding gcloud not working](https://stackoverflow.com/questions/31037279/gcloud-command-not-found-while-installing-google-cloud-sdk)
+3. [GCloud Issue Fixed](https://gist.github.com/dwchiang/10849350)
