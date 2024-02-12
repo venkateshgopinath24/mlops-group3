@@ -4,3 +4,4 @@ fsspec
 gcsfs
 requests
 pandas
+logging
